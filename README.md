@@ -16,8 +16,10 @@
 ![image](https://github.com/Yanyutin753/googleSearch-On-Wechat/assets/132346501/5bc6270d-7221-48f5-b8f1-3e87e880bf79)
 
 ## 如何使用
-- 1. 在[Serper](https://serper.dev/)注册密钥，每个人免费2500次搜索
-- 2. 安装本插件
+- 1.在[Serper](https://serper.dev/)注册密钥，每个人免费2500次搜索
+![image](https://github.com/Yanyutin753/googleSearch-On-Wechat/assets/132346501/32a55333-1e5c-48fd-91fa-00f79cff04e5)
+
+- 2.安装本插件
  ```
 # 微信机器人输入
 #installp https://github.com/Yanyutin753/googleSearch-On-Wechat.git
