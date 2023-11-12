@@ -1,4 +1,5 @@
 # googleSearch-On-Wechat
+#### 请给个免费的star⭐，感谢！
 ## 适用于chatgpt-on-wechat项目插件
 ## 插件介绍
 # 概述
