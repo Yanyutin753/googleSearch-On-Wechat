@@ -33,6 +33,9 @@
  微信机器人输入
  #reloadp GoogleSearch
  ```
+### 流程图如下
+![7ed46ce7e455a6785d00765a04cd60d](https://github.com/Yanyutin753/googleSearch-On-Wechat/assets/132346501/65ae57fc-d8e0-44da-8e22-ba1250ad9403)
+
 
 ## 注意事项
 - 搜图功能随意性很高，可能会出现很多不良信息，注意分辨
