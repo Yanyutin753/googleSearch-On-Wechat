@@ -6,7 +6,6 @@ from bridge.bridge import Bridge
 from bridge.reply import Reply, ReplyType
 from config import conf
 from common.log import logger
-from langchain.utilities import GoogleSerperAPIWrapper
 import plugins
 from plugins import Plugin, Event, EventContext, EventAction
 from channel.chat_channel import check_contain, check_prefix
@@ -51,7 +50,6 @@ class GoogleSearch(Plugin):
     def handle_text_search(self, e_context, query):
         cmsg : ChatMessage = e_context['context']['msg']
         session_id = cmsg.from_user_id
-        os.environ["SERPER_API_KEY"] = self.serper_api_key
         url = "https://google.serper.dev/search"
         payload = json.dumps({
             "q": query,
@@ -63,6 +61,7 @@ class GoogleSearch(Plugin):
             'Content-Type': 'application/json'
         }
         response = requests.request("POST", url, headers=headers, data=payload)
+        logger.info(response.text);
         query += response.text + "\n----------------\n"
         prompt = "你是一位群聊机器人，聊天记录已经在你的大脑中被你总结成多段摘要总结，你需要对它们进行摘要总结，最后输出一篇完整的摘要总结，用列表的形式输出。\n"
         btype = Bridge().btype['chat']
