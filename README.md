@@ -11,6 +11,9 @@
 - 插件将搜索结果提供给ChatGPT进行进一步分析和总结。
 ![image](https://github.com/Yanyutin753/googleSearch-On-Wechat/assets/132346501/0f216954-96bd-4c69-9878-8fb7a35baf62)
 
+![image](https://github.com/Yanyutin753/googleSearch-On-Wechat/assets/132346501/b9e383ee-6f6d-4495-be9b-2cd75619024a)
+
+
 ##### 2. 搜图功能
 - 用户可以使用插件进行图像搜索，从而获取与图片相关的信息。
 - 通过在网络上搜索图片，用户能够发现相关的内容和详细资料。
