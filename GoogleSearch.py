@@ -49,18 +49,22 @@ class GoogleSearch(Plugin):
             
 
     def handle_text_search(self, e_context, query):
-        context = e_context['context']
         cmsg : ChatMessage = e_context['context']['msg']
-        username = None
         session_id = cmsg.from_user_id
         os.environ["SERPER_API_KEY"] = self.serper_api_key
-        search = GoogleSerperAPIWrapper()
-        # 修改为只搜索中国并使用简体中文
-        response = search.run(query, country="CN", language="zh-CN")
-
-        query += response + "\n----------------\n"
+        url = "https://google.serper.dev/search"
+        payload = json.dumps({
+            "q": query,
+            "gl": "cn",
+            "hl": "zh-cn"
+        })
+        headers = {
+            'X-API-KEY': self.serper_api_key,
+            'Content-Type': 'application/json'
+        }
+        response = requests.request("POST", url, headers=headers, data=payload)
+        query += response.text + "\n----------------\n"
         prompt = "你是一位群聊机器人，聊天记录已经在你的大脑中被你总结成多段摘要总结，你需要对它们进行摘要总结，最后输出一篇完整的摘要总结，用列表的形式输出。\n"
-        
         btype = Bridge().btype['chat']
         bot = bot_factory.create_bot(Bridge().btype['chat'])
         session = bot.sessions.build_session(session_id, prompt)
@@ -100,7 +104,6 @@ class GoogleSearch(Plugin):
 
                 if 'imageUrl' in first_image:
                     image_url = first_image['imageUrl']
-
 
                      # 如果是以 http:// 或 https:// 开头，且包含.jpg/.jpeg/.png/.gif/.webp，则认为是图片 URL
                     if (image_url.startswith("http://") or image_url.startswith("https://")):
