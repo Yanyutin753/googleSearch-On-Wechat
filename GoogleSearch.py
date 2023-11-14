@@ -51,15 +51,17 @@ class GoogleSearch(Plugin):
         cmsg : ChatMessage = e_context['context']['msg']
         session_id = cmsg.from_user_id
         url = "https://google.serper.dev/search"
+        # 用utf-8的格式
         payload = json.dumps({
             "q": query,
             "gl": "cn",
             "hl": "zh-cn"
-        })
+        }, ensure_ascii=False).encode('utf-8')
         headers = {
             'X-API-KEY': self.serper_api_key,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json; charset=utf-8'
         }
+
         response = requests.request("POST", url, headers=headers, data=payload)
         logger.info(response.text);
         query += response.text + "\n----------------\n"
@@ -81,15 +83,15 @@ class GoogleSearch(Plugin):
 
     def handle_image_search(self, e_context, query):
         url = "https://google.serper.dev/images"
-
+        # 用utf-8的格式
         payload = json.dumps({
             "q": query,
             "gl": "cn",
             "hl": "zh-cn"
-        })
+        }, ensure_ascii=False).encode('utf-8')
         headers = {
             'X-API-KEY': self.serper_api_key,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json; charset=utf-8'
         }
 
         response = requests.request("POST", url, headers=headers, data=payload)
